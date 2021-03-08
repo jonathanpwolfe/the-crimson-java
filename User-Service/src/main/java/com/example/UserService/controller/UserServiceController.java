@@ -32,7 +32,7 @@ public class UserServiceController {
 	
 	@PostMapping("/users")
 	public ResponseEntity<Object> createUser(@RequestBody User user) {
-		User newUser = UserServiceDAO.createUser(user);
+		User newUser = userServiceDAO.createUser(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
 		
 		return ResponseEntity.created(location).build();
