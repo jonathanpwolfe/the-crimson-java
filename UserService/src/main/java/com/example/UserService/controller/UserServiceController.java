@@ -12,27 +12,27 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.UserService.model.User;
-import com.example.UserService.service.UserServiceDAO;
+import com.example.UserService.service.UserService;
 
 @RestController
 public class UserServiceController {
 	
 	@Autowired
-	private UserServiceDAO userServiceDAO;
+	private UserService userService;
 	
 	@GetMapping("/users/{id}")
 	public User getUserById(@PathVariable int id) {
-		User possibleUser = userServiceDAO.getUserById(id);
+		User possibleUser = userService.getUserById(id);
 		if(possibleUser != null) {
 			return possibleUser;
 		}
 		else
-			return userServiceDAO.getAllUsers();
+			return userService.getAllUsers();
 	}
 	
 	@PostMapping("/users")
 	public ResponseEntity<Object> createUser(@RequestBody User user) {
-		User newUser = userServiceDAO.createUser(user);
+		User newUser = userService.createUser(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
 		
 		return ResponseEntity.created(location).build();

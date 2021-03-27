@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.UserService.repository.PasscodeRepository;
 
-public class PasscodeServiceDAO {
+public class PasscodeService{
 	@Autowired
 	private PasscodeRepository passcodeRepository;
 	

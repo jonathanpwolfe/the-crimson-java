@@ -18,23 +18,27 @@ import javax.persistence.Table;
 public class User {
 	@Id
 	@Column(name = "")
-	int id;
+	private int id;
 	@Column(name = "")
-	String username;
+	private String username;
 	@Column(name = "")
-	String emailAddress;
+	private String emailAddress;
 	@Column(name = "")
-	Passcode passcode;
+	private Passcode passcode;
 	@Column(name = "")
-	String firstName;
+	private String firstName;
 	@Column(name = "")
-	Date joinDate;
+	private Date joinDate;
 	@Column(name = "")
-	Date birthDate;
+	private Date birthDate;
 	@Column(name = "")
-	int upvotes;
+	private int totalUpvotes;
 	@Column(name = "")
-	int downvotes;
+	private int totalDownvotes;
+	@Column(name = "")
+	private int totalKarma;
+	@Column(name = "")
+	private int postCount;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(schema = "", name = "", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "userid"))
@@ -90,16 +94,16 @@ public class User {
 		this.emailAddress = emailAddress;
 	}
 	public int getUpvotes() {
-		return upvotes;
+		return totalUpvotes;
 	}
 	public void setUpvotes(int upvotes) {
-		this.upvotes = upvotes;
+		this.totalUpvotes = upvotes;
 	}
 	public int getDownvotes() {
-		return downvotes;
+		return totalDownvotes;
 	}
 	public void setDownvotes(int downvotes) {
-		this.downvotes = downvotes;
+		this.totalDownvotes = downvotes;
 	}
 	
 }

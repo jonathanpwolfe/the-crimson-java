@@ -7,7 +7,7 @@ import com.example.UserService.model.User;
 import com.example.UserService.repository.UserRepository;
 
 @Component
-public class UserServiceDAO {
+public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -36,8 +36,8 @@ public class UserServiceDAO {
 	}
 	public boolean validate(User user, String password)
 	{	
-		PasscodeServiceDAO passcodeServiceDAO =new PasscodeServiceDAO();
-		if(passcodeServiceDAO.validate(user.getId(), password)==true)
+		PasscodeService passcodeService =new PasscodeService();
+		if(passcodeService.validate(user.getId(), password)==true)
 			return true;
 		else
 		return false;
