@@ -7,14 +7,15 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.HibernateException;
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import com.example.UserService.model.User;
 import com.example.UserService.util.SessionFactory;
 
-
+@Repository
 public class UserRepository {
 
 	public User getUserByUsername(String username) {
